@@ -9,23 +9,22 @@
    <table class="table">
     <thead>
         <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Duración</th>
-            <th scope="col">Sinopsis</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Hora de entrada</th>
+           
         </tr>
         </thead>
         <tbody>
-        @forelse($movies as $movie)
+        @forelse($entrances as $entrance)
     <tr>
-      <th scope="row">{{$movie->name}}</th>
-      <td>{{$movie->duration}}</td>
-      <td>{{$movie->synopsis}}</td>
+      <th scope="row">{{$entrance->price}}</th>
+      <td>{{$entrance->hourEntrance}}</td>
+      
       <td>
       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <form action="{{ route('movies.destroy', $movie->id) }}" method="post">
-                            <a class="btn btn-secondary" href="{{ route('movies.show', $movie->id) }}">Ver</a>
-                            <a class="btn btn-secondary" href="{{ route('movies.edit', $movie->id) }}">Editar</a>
+                        <form action="{{ route('entrances.destroy', $entrance->id) }}" method="post">
+                            <a class="btn btn-secondary" href="{{ route('entrances.show', $entrance->id) }}">Ver</a>
+                            <a class="btn btn-secondary" href="{{ route('entrances.edit', $entrance->id) }}">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>

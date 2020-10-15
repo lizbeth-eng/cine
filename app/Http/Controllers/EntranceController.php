@@ -95,4 +95,11 @@ class EntranceController extends Controller
         $entrance->delete();
         return redirect()->route('entrances.index');
     }
+    public function viewTable()
+    {
+        $entrances = DB::table('entrances')->paginate(10);
+        return view('entrances.viewTable', compact('entrances'));
+    }
+
+
 }

@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('movies','MovieController');
-Route::get('viewTable','MovieController@viewTable');
+//Route::resource('movies','MovieController');
+Route::get('/movies.viewTable','MovieController@viewTable');
+Route::get('/funtions.viewTable','FuntionsController@viewTable');
+Route::get('/entrances.viewTable','EntranceController@viewTable');
+Route::get('/rooms.viewTable','RoomController@viewTable');
+
+
 
 Route::resources([
     'movies'    => 'MovieController',

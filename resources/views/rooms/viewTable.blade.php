@@ -9,23 +9,22 @@
    <table class="table">
     <thead>
         <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Duración</th>
-            <th scope="col">Sinopsis</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Sillas</th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Capacidad</th>
         </tr>
         </thead>
         <tbody>
-        @forelse($movies as $movie)
+        @forelse($rooms as $room)
     <tr>
-      <th scope="row">{{$movie->name}}</th>
-      <td>{{$movie->duration}}</td>
-      <td>{{$movie->synopsis}}</td>
+      <th scope="row">{{$room->chairs}}</th>
+      <td>{{$room->location}}</td>
+      <td>{{$room->capacity}}</td>
       <td>
       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <form action="{{ route('movies.destroy', $movie->id) }}" method="post">
-                            <a class="btn btn-secondary" href="{{ route('movies.show', $movie->id) }}">Ver</a>
-                            <a class="btn btn-secondary" href="{{ route('movies.edit', $movie->id) }}">Editar</a>
+                        <form action="{{ route('movies.destroy', $room->id) }}" method="post">
+                            <a class="btn btn-secondary" href="{{ route('rooms.show', $room->id) }}">Ver</a>
+                            <a class="btn btn-secondary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>

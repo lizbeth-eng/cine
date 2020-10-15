@@ -96,4 +96,11 @@ class FuntionsController extends Controller
         $funtion->delete();
         return redirect()->route('funtions.index');
     }
+    public function viewTable()
+    {
+        $funtions = DB::table('funtions')->paginate(10);
+        return view('funtions.viewTable', compact('funtions'));
+    }
+
 }
+
