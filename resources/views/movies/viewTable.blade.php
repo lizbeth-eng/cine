@@ -22,8 +22,8 @@
       <th scope="col">category</th>
       <th scope="col">actors"</th>
       <th scope="col">Género</th>
-      
-    </tr>
+          
+      </tr>
   </thead>
   <tbody>
     <tr>
