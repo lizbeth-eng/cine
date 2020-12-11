@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade  as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MoviesExport;
 
 class MovieController extends Controller
 {
@@ -109,5 +112,20 @@ class MovieController extends Controller
         $movies = DB::table('movies')->paginate(10);
         return view('movies.viewTable', compact('movies'));
     }
+    public function exportToPDF(){
+        $movies = movie::get();
+        $pdf = PDF::loadView('movies.exportToPDF', compact('movies'));
+         return $pdf->download('Listado de peliculas.pdf');
+     }
+  public function exportToXls(){
+   
+      return Excel::download(new MoviesExport, 'movies.xlsx');
+    
+  }
+  public function exportToCsv(){
+    
+    return Excel::download(new MoviesExport, 'movies.csv');
 
+    }
+    
 }

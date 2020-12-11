@@ -6,18 +6,13 @@
         @method('PUT')
 
         <div class="row">
-
-            <div class="col-md">
-                <label for="">Agregar entarda:</label>
-                <input value="{{ $consumable->name }}" class="form-control" type="text" name="name" id="">
-            </div>
-            <div class="col-md">
+         <div class="col-md">
                 <label for="">Precio:</label>
-                <input value="{{ $consumable->price }}" class="form-control" type="text" name="price" id="">
+                <input value="{{ $entrance->price }}" class="form-control" type="text" name="price" id="">
             </div>
             <div class="col-md">
-                <label for="">Cantidad:</label>
-                <input value="{{ $consumable->quantity }}" class="form-control" type="number" name="quantity" id="">
+                <label for="">Hora entrada:</label>
+                <input value="{{ $entrance->hourEntrance }}" class="form-control" type="number" name="hourEntrance" id="">
             </div>
 
         </div>

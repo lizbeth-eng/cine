@@ -1,11 +1,6 @@
-
 @extends('layouts.app')
 @section('content')
 
-
-    <!-- COPIA DE FORMULARIO DE INICIO DE SESIÓN -->
-
-<!-- AGREGAR BOOTSTRAP Y HOJA DE ESTILO CSS3 -->
 
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -25,7 +20,7 @@
                         <div class="card-body">
 
                             <div align="center" class="alinearCentro">
-                                <img class="rounded-circle imagenCard" src="{{ asset('logos/Cine.jpg') }}" alt="">
+                                <img class="rounded-circle imagenCard" src="{{ asset('logos/palomitas.jpg') }}" alt="">
                             </div>
 
 
@@ -68,29 +63,30 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
+                                    <div class="col-md-10 offset-md-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="remember"
                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="form-check-label" for="remember">
                                                 {{ __('Remember Me') }}
+
+                                                @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                            @endif
                                             </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
+                                    <div class="col-md-12 offset-md-8">
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Login') }}
                                         </button>
 
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
                                     </div>
                                 </div>
                             </form>

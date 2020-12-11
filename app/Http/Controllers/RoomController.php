@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade  as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RoomsExport;
 class RoomController extends Controller
 {
     /**
@@ -102,6 +105,20 @@ public function viewTable()
     $rooms= DB::table('rooms')->paginate(10);
     return view('rooms.viewTable', compact('rooms'));
 }
+public function exportToPDF(){
+    $rooms = room::get();
+    $pdf = PDF::loadView('rooms.exportToPDF', compact('rooms'));
+     return $pdf->download('Listado de salas.pdf');
+ }
+ public function exportToXls(){
+    $rooms = room::get();
+      return Excel::download(new RoomsExport, 'rooms.xlsx');
+    
+  }
+  public function exportToCsv(){
+    
+    return Excel::download(new RoomsExport, 'rooms.csv');
 
+    }
 
 }

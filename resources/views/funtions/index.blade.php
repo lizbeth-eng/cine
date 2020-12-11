@@ -5,18 +5,33 @@
  <div class="col-sm-2"><a href="{{route('funtions.create') }}"><button  class="btn btn-primary">Agregar</button>
  </a>
  </div>
- <div class="col-sm-10"><h1>Funciones registradas</h1>
+ <div class="col-sm-10"><h1>Lista de funciones</h1>
  </div>
- 
+ </div>
+ <div class="btn-group col-4" role="group" aria-label="Basic outlined example">
+  <a href = "{{route('funtions.pdf')}}" class="btn btn-outline-dark">PDF</a>
+  <a href ="/funtionsXLS" class="btn btn-outline-secondary">XLS</a>
+  <a  href ="/funtionsCSV" class="btn btn-outline-dark">CSV</a>
+</div>
+ <table class="table table-striped">
+ <thead>
+    <th>ID</th>
+    <th>Comienzo</th>
+    <th>Final</th>
+    <th>Disponible</th>
+    <th>Tipo</th>
+    <th>Acciones</th>
+    </thead>
+    <tbody>
   @forelse($funtions as $funtion)
- <div class="row">
-<div class="card col-sm bg-light" style="...">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ $funtion->start }}</h5>
-    <h3 class="card-text">{{ $funtion->end }}</h3>
-    <p class="card-text">{{ $funtion->available }}</p>
-    <p class="card-text text-muted">{{ $funtion->type }}</p>
+  <tr>
+            <td>{{ $funtion->id }}</td>
+            <td>{{ $funtion->start }}</td>
+            <td>{{ $funtion->end }}</td>
+            <td>{{ $funtion->available}}</td>
+            <td>{{ $funtion->type}}</td>
+            <td>
+ 
     <form action="{{ route('funtions.destroy', $funtion->id) }}" method="post">
         <a class="btn btn-info" href="{{ route('funtions.show', $funtion->id) }}">Ver</a>
         <a class="btn btn-info" href="{{ route('funtions.edit', $funtion->id) }}">Editar</a>

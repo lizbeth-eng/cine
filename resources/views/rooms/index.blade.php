@@ -5,19 +5,31 @@
  <div class="col-sm-2"><a href="{{route('rooms.create') }}"><button  class="btn btn-primary">Agregar</button>
  </a>
  </div>
- <div class="col-sm-10"><h1>Salas registradas</h1>
+ <div class="col-sm-10"><h1>Lista de salas</h1>
+</div>
+ <div class="btn-group col-4" role="group" aria-label="Basic outlined example">
+  <a href = "{{route('rooms.pdf')}}" class="btn btn-outline-dark">PDF</a>
+  <a href ="/roomsXLS" class="btn btn-outline-secondary">XLS</a>
+  <a href ="/roomsCSV" class="btn btn-outline-dark">CSV</a>
+</div>
  </div>
+ <table class="table table-striped">
+ <thead>
+    <th>ID</th>
+    <th>Sillas</th>
+    <th>Ubicación</th>
+    <th>Localización</th>
+    <th>Acciones</th>
+    </thead>
+    <tbody>
+ @forelse($rooms as $room)
+<tr>
+            <td>{{ $room->id }}</td>
+            <td>{{ $room-> chairs}}</td>
+            <td>{{ $room-> location}}</td>
+            <td>{{ $room->capacity }}</td>
+            <td>
  
- 
-
-@forelse($rooms as $room)
- <div class="row">
-<div class="card col-sm bg-light" style="...">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ $room->chairs }}</h5>
-    <h3 class="card-text">{{ $room->location }}</h3>
-    <p class="card-text">{{ $room->capacity }}</p>
     <form action="{{ route('rooms.destroy', $room->id) }}" method="post">
         <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
         <a class="btn btn-info" href="{{ route('rooms.edit', $room->id) }}">Editar</a>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Funtion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
- 
+use Barryvdh\DomPDF\Facade  as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\FuntionsExport;
 class FuntionsController extends Controller
 {
     /**
@@ -101,6 +103,18 @@ class FuntionsController extends Controller
         $funtions = DB::table('funtions')->paginate(10);
         return view('funtions.viewTable', compact('funtions'));
     }
+    public function exportToPDF(){
+        $funtions = funtion::get();
+        $pdf = PDF::loadView('funtions.exportToPDF', compact('funtions'));
+         return $pdf->download('Lista de funciones.pdf');
+     }
 
+     public function exportToXls(){
+    return Excel::download(new FuntionsExport,'funtions.xlsx');
+        
+      }
+      public function exportToCsv(){
+    return Excel::download(new FuntionsExport, 'funtions.csv');
+    
 }
-
+}

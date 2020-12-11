@@ -5,20 +5,37 @@
  <div class="col-sm-2"><a href="{{route('movies.create') }}"><button  class="btn btn-primary">Agregar</button>
  </a>
  </div>
- <div class="col-sm-10"><h1>Peliculas registradas</h1>
+ 
  </div>
- 
- 
+ <h1>Listado de peliculas </h1>
+ </div>
+ <div class="btn-group col-4" role="group" aria-label="Basic outlined example">
+  <a href = "{{route('movies.pdf')}}" class="btn btn-outline-dark">PDF</a>
+  <a href ="/moviesXLS" class="btn btn-outline-secondary">XLS</a>
+  <a  href ="/moviesCSV" class="btn btn-outline-dark">CSV</a>
+  <a href = "{{route('movies.grafica')}}" class="btn btn-outline-dark">Graficar</a>
+
+</div>
+ <table class="table table-striped">
+ <thead>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Director</th>
+    <th>Sipnosis</th>
+    <th>Duracion</th>
+    <th>Acciones</th>
+    </thead>
+    <tbody>
 
 @forelse($movies as $movie)
- <div class="row">
-<div class="card col-sm bg-light" style="...">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ $movie->name }}</h5>
-    <h3 class="card-text">{{ $movie->director }}</h3>
-    <p class="card-text">{{ $movie->synopsis }}</p>
-    <p class="card-text text-muted">{{ $movie->duration }}</p>
+<tr>
+            <td>{{ $movie->id }}</td>
+            <td>{{ $movie->name }}</td>
+            <td>{{ $movie->director }}</td>
+            <td>{{ $movie-> synopsis}}</td>
+            <td>{{ $movie-> duration}}</td>
+            <td>
+
     <form action="{{ route('movies.destroy', $movie->id) }}" method="post">
         <a class="btn btn-info" href="{{ route('movies.show', $movie->id) }}">Ver</a>
         <a class="btn btn-info" href="{{ route('movies.edit', $movie->id) }}">Editar</a>

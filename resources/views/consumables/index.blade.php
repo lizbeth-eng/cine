@@ -12,7 +12,13 @@
         <button class="btn btn-primary">Agregar</button>
     </a>
 </div>
-
+<h1>Listado de consumibles</h1>
+ </div>
+ <div class="btn-group col-4" role="group" aria-label="Basic outlined example">
+  <a href = "{{route('consumables.pdf')}}" class="btn btn-outline-dark">PDF</a>
+  <a href ="/consumablesXLS" class="btn btn-outline-secondary">XLS</a>
+  <a  href ="/consumablesCSV" class="btn btn-outline-dark">CSV</a>
+</div>
 <table class="table table-responsive-md">
     <thead>
     <th>ID</th>

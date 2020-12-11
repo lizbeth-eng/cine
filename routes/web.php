@@ -22,6 +22,31 @@ Route::get('/funtions.viewTable','FuntionsController@viewTable');
 Route::get('/entrances.viewTable','EntranceController@viewTable');
 Route::get('/rooms.viewTable','RoomController@viewTable');
 
+Route::get('entrances-pdf','EntranceController@exportToPDF')->name('entrances.pdf');
+Route::get('consumables-pdf','ConsumableController@exportToPDF')->name('consumables.pdf');
+Route::get('movies-pdf','MovieController@exportToPDF')->name('movies.pdf');
+Route::get('funtions-pdf','FuntionsController@exportToPDF')->name('funtions.pdf');
+Route::get('rooms-pdf','RoomController@exportToPDF')->name('rooms.pdf');
+
+Route::get('/moviesXLS','MovieController@exportToXls');
+Route::get('/moviesCSV','MovieController@exportToCsv');
+
+Route::get('/roomsXLS','RoomController@exportToXls');
+Route::get('/roomCSV','RoomController@exportToCsv');
+
+Route::get('/consumablesXLS','ConsumableController@exportToXls');
+Route::get('/consumablesCSV','ConsumableController@exportToCsv');
+
+Route::get('/funtionsXLS','FuntionsController@exportToXls');
+Route::get('/funtionsCSV','FuntionsController@exportToCsv');
+
+Route::get('/entrancesXLS','EntranceController@exportToXls');
+Route::get('/entrancesCSV','EntranceController@exportToCsv');
+
+Route::get('graficas.graficasPeliculas','GraficasController@graficarPeliculas')->name('movies.grafica');
+
+
+
 
 
 Route::resources([
